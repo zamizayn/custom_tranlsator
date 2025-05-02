@@ -1,0 +1,18 @@
+name: custom_google_translate_example
+description: Example app for the custom_google_translate package.
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Import your package using a relative path
+  custom_google_translate:
+    path: ../
+
+flutter:
+  uses-material-design: true
