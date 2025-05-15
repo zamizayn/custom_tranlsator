@@ -75,7 +75,7 @@ class TranslateText extends StatelessWidget {
               return const SizedBox(
                 width: 20,
                 height: 20,
-                child: CircularProgressIndicator(strokeWidth: 2),
+                child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
               );
             } else if (snapshot.hasError) {
               return Text(
