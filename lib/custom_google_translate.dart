@@ -71,6 +71,23 @@ class TranslateText extends StatelessWidget {
         return FutureBuilder<String>(
           future: GoogleTranslator().translate(text, from: from, to: lang),
           builder: (context, snapshot) {
+            if (lang == 'en') {
+          return Text(
+            text,
+            style: style,
+            textAlign: textAlign,
+            textDirection: textDirection,
+            locale: locale,
+            softWrap: softWrap,
+            overflow: overflow,
+            textScaleFactor: textScaleFactor,
+            maxLines: maxLines,
+            semanticsLabel: semanticsLabel,
+            strutStyle: strutStyle,
+            textWidthBasis: textWidthBasis,
+            textHeightBehavior: textHeightBehavior,
+          );
+        }
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const SizedBox(
                 width: 20,
