@@ -96,7 +96,7 @@ class TranslateText extends StatelessWidget {
               );
             } else if (snapshot.hasError) {
               return Text(
-                'Translation error',
+                text,
                 style: style,
                 textAlign: textAlign,
                 maxLines: maxLines,
