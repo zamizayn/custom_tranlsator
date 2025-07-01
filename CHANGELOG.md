@@ -4,7 +4,7 @@ All notable changes to this project will be documented here.
 
 ---
 
-## [1.0.4] - 2025-05-15
+## [1.0.5] - 2025-05-15
 
 ### Added
 - `TranslateText` widget to replace regular `Text` for automatic translation
@@ -13,3 +13,4 @@ All notable changes to this project will be documented here.
 - Full language support for Google Translate
 - Not Loading translation when default language is used
 - Removed Translation Error showing when the Translation fails
+- Added extension to use on any string
