@@ -89,10 +89,12 @@ class TranslateText extends StatelessWidget {
           );
         }
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const SizedBox(
-                width: 20,
-                height: 20,
-                // child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+               return Text(
+                text,
+                style: style,
+                textAlign: textAlign,
+                maxLines: maxLines,
+                overflow: overflow,
               );
             } else if (snapshot.hasError) {
               return Text(

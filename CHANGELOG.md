@@ -4,7 +4,7 @@ All notable changes to this project will be documented here.
 
 ---
 
-## [1.0.5] - 2025-05-15
+## [1.0.6] - 2025-05-15
 
 ### Added
 - `TranslateText` widget to replace regular `Text` for automatic translation
