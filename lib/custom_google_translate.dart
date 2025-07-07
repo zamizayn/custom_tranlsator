@@ -1,7 +1,6 @@
 library custom_google_translate;
 
 import 'dart:convert';
-import 'dart:developer';
 import 'package:custom_google_translate/tranlsation_controller.dart';
 import 'package:custom_google_translate/translation_config.dart';
 import 'package:flutter/material.dart';

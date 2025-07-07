@@ -1,6 +1,6 @@
 name: custom_google_translate
 description: A customizable widget package for Google Translate support in Flutter.
-version: 1.0.6
+version: 1.0.7
 homepage: https://github.com/zamizayn/custom_tranlsator
 repository: https://github.com/zamizayn/custom_tranlsator
 issue_tracker: https://github.com/zamizayn/custom_tranlsator/issues
