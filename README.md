@@ -33,15 +33,16 @@ flutter pub get
 
 ## 🧪 Usage
 
+
+
 ### 1. Wrap Your App With `TranslationControllerProvider`
 
 ```dart
-void main() {
-  runApp(
-    TranslationControllerProvider(
-      child: MyApp(),
-    ),
-  );
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  TranslationConfig.init('API_KEY');
+  runApp(const TranslateExampleApp());
 }
 ```
 
