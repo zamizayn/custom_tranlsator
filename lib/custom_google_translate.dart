@@ -39,7 +39,7 @@ class GoogleTranslator {
   }
 }
 
-class TranslateText extends StatelessWidget {
+class TranslateText extends StatefulWidget {
   final String text;
   final String from;
 
@@ -75,64 +75,74 @@ class TranslateText extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<TranslateText> createState() => _TranslateTextState();
+}
+
+class _TranslateTextState extends State<TranslateText> {
+
+   String? _translatedText;
+  String? _lastLang;
+
+  @override
+  void initState() {
+    super.initState();
+    _lastLang = TranslationController.instance.selectedLang.value;
+    _fetchTranslation(_lastLang!);
+  }
+
+  void _fetchTranslation(String lang) async {
+    if (lang == 'en') {
+      setState(() {
+        _translatedText = widget.text;
+      });
+      return;
+    }
+
+    try {
+      final translated = await GoogleTranslator().translate(
+        widget.text,
+        from: widget.from,
+        to: lang,
+      );
+      if (mounted) {
+        setState(() {
+          _translatedText = translated;
+          _lastLang = lang;
+        });
+      }
+    } catch (e) {
+      // fallback
+      if (mounted) {
+        setState(() {
+          _translatedText = widget.text;
+        });
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<String>(
       valueListenable: TranslationController.instance.selectedLang,
       builder: (context, lang, _) {
-        return FutureBuilder<String>(
-          future: GoogleTranslator().translate(text, from: from, to: lang),
-          builder: (context, snapshot) {
-            if (lang == 'en') {
-              return Text(
-                text,
-                style: style,
-                textAlign: textAlign,
-                textDirection: textDirection,
-                locale: locale,
-                softWrap: softWrap,
-                overflow: overflow,
-                textScaleFactor: textScaleFactor,
-                maxLines: maxLines,
-                semanticsLabel: semanticsLabel,
-                strutStyle: strutStyle,
-                textWidthBasis: textWidthBasis,
-                textHeightBehavior: textHeightBehavior,
-              );
-            }
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Text(
-                text,
-                style: style,
-                textAlign: textAlign,
-                maxLines: maxLines,
-                overflow: overflow,
-              );
-            } else if (snapshot.hasError) {
-              return Text(
-                text,
-                style: style,
-                textAlign: textAlign,
-                maxLines: maxLines,
-                overflow: overflow,
-              );
-            } else {
-              return Text(
-                snapshot.data ?? '',
-                style: style,
-                textAlign: textAlign,
-                textDirection: textDirection,
-                locale: locale,
-                softWrap: softWrap,
-                overflow: overflow,
-                textScaleFactor: textScaleFactor,
-                maxLines: maxLines,
-                semanticsLabel: semanticsLabel,
-                strutStyle: strutStyle,
-                textWidthBasis: textWidthBasis,
-                textHeightBehavior: textHeightBehavior,
-              );
-            }
-          },
+        if (lang != _lastLang) {
+          _fetchTranslation(lang);
+        }
+
+        return Text(
+          _translatedText ?? widget.text,
+          style: widget.style,
+          textAlign: widget.textAlign,
+          textDirection: widget.textDirection,
+          locale: widget.locale,
+          softWrap: widget.softWrap,
+          overflow: widget.overflow,
+          textScaleFactor: widget.textScaleFactor,
+          maxLines: widget.maxLines,
+          semanticsLabel: widget.semanticsLabel,
+          strutStyle: widget.strutStyle,
+          textWidthBasis: widget.textWidthBasis,
+          textHeightBehavior: widget.textHeightBehavior,
         );
       },
     );

@@ -3,7 +3,6 @@ import 'package:custom_google_translate/tranlsation_controller.dart';
 import 'package:custom_google_translate/translation_config.dart';
 import 'package:flutter/material.dart';
 import 'package:custom_google_translate/custom_google_translate.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
