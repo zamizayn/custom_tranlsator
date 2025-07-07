@@ -13,6 +13,7 @@ dependencies:
   # Import your package using a relative path
   custom_google_translate:
     path: ../
+  flutter_dotenv: ^5.2.1
 
 flutter:
   uses-material-design: true
