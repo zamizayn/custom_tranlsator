@@ -79,8 +79,7 @@ class TranslateText extends StatefulWidget {
 }
 
 class _TranslateTextState extends State<TranslateText> {
-
-   String? _translatedText;
+  String? _translatedText;
   String? _lastLang;
 
   @override
@@ -126,7 +125,9 @@ class _TranslateTextState extends State<TranslateText> {
       valueListenable: TranslationController.instance.selectedLang,
       builder: (context, lang, _) {
         if (lang != _lastLang) {
-          _fetchTranslation(lang);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _fetchTranslation(lang);
+          });
         }
 
         return Text(

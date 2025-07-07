@@ -192,7 +192,7 @@ class _TranslationHomeState extends State<TranslationHome> {
 
             // Translated text
             TranslateText(
-              "Kaloor",
+              "Good morning",
               style: const TextStyle(fontSize: 24),
             ),
           ],
